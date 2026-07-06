@@ -1,11 +1,15 @@
 class Solution {
     public int alternatingSum(int[] nums) {
-        int s=0;
-        int t=1;
+        
+        int c=0;
         for(int i=0;i<nums.length;i++){
-            s+=t*nums[i];
-            t=t*-1;
+            if(i%2==0){
+                c+=nums[i];
+            }
+            else{
+                c-=nums[i];
+            }
         }
-        return s;
+        return c;
     }
 }
