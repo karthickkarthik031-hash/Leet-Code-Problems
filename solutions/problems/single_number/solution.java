@@ -1,20 +1,15 @@
 class Solution {
-    public int singleNumber(int[] arr) {
-        int a,b=0;
-        for (int i=0;i<arr.length;i++) {
-            a=0;
-            for (int j=0;j<arr.length;j++) {
-                if(i!=j&&arr[i]==arr[j]){
-                    a=1;
-                }
-            }
-            if(a!=1)
-            {
-                b=arr[i];
-                break;
-            }
-           
+    public int singleNumber(int[] nums) {
+        HashMap<Integer,Integer>a=new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            a.put(nums[i],a.getOrDefault(nums[i],0)+1);
         }
-        return b; 
+        int b=0;
+        for(Map.Entry<Integer,Integer>entry:a.entrySet()){
+            if(entry.getValue()==1){
+                b=entry.getKey();
+            }
+        }
+        return b;
     }
 }
